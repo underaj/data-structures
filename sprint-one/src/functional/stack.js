@@ -14,13 +14,18 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    key--;
-    popped = storage[key];
-    return popped;
+    if(key === -1){
+      return;
+    }else{
+      key--;
+      popped = storage[key];
+      return popped;
+    }
+    
   };
 
   someInstance.size = function() {
-    if(key < 0){
+    if(key < 0) {
       key = 0;
     }
     return key;
