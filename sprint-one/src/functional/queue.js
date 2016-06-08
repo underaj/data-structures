@@ -13,10 +13,19 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
+    if (queueSize > firstOut) {
+      var curEle = storage[firstOut];
+      firstOut++;
+      return curEle;
+    }
   };
 
   someInstance.size = function() {
-    return queueSize - firstOut;
+    if(queueSize - firstOut < 0) {
+      return 0;
+    }else{
+      return queueSize - firstOut;
+    }
   };
 
   return someInstance;
