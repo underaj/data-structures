@@ -12,14 +12,12 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  console.log(Tree(value));
   this.children.push(Tree(value));
 };
 
 treeMethods.contains = function(target) {
   var result = false;
   var searchTree = function(node) {
-    console.log(node.value);
     if (node.value === target) {
       result = true;
     }
