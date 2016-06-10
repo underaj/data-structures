@@ -7,23 +7,40 @@ HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket;
   var tuple = [k, v];
+  var keyNoExists = true;
   if (this._storage.get(index) === undefined) {
-    // insert bucket
-
-    bucket = this._storage.set(index, );
+    this._storage.set(index, [tuple]);
   } else {
-
+    bucket = this._storage.get(index);
+    for (var i = 0; i < bucket.length; i++) {
+      if (k === bucket[i][0]) {
+        keyNoExists = false;
+        bucket[i][1] = v;
+      } else if (keyNoExists && bucket.length - 1 === i) {
+        bucket.push(tuple);
+      }
+    }
   }
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(index);
+  var bucket = this._storage.get(index);
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      return bucket[i][1];
+    }
+  }
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(index, undefined);
+  var bucket = this._storage.get(index);
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      delete bucket[i][1];
+    }
+  }
 };
 
 
