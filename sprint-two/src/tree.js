@@ -14,7 +14,7 @@ var treeMethods = {};
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
 };
-
+// Constant
 treeMethods.contains = function(target) {
   var result = false;
   var searchTree = function(node) {
@@ -32,7 +32,7 @@ treeMethods.contains = function(target) {
   return result;
 };
 
-
+// linear
 
 /*
  * Complexity: What is the time complexity of the above functions?

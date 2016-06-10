@@ -43,7 +43,7 @@ HashTable.prototype.remove = function(k) {
   }
 };
 
-
+// linear
 
 /*
  * Complexity: What is the time complexity of the above functions?
